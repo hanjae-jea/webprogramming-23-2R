@@ -10,11 +10,13 @@ on:
 jobs:
     Job-Gut-Deul:
         runs-on: ubuntu-latest
+        name: "NPM 시작"
         steps:
             - run: echo "어쩌고 저쩌고.... ${{ github.repository }}"
             - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
-            with:
-                node-version: "18"
-            run: npm install
-            run: node index.js
+            - name: Setup
+                uses: actions/setup-node@v4
+                with:
+                    node-version: 18
+            - run: npm install
+            - run: node index.js
